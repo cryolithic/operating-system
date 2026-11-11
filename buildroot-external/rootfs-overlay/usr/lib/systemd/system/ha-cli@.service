@@ -1,14 +1,12 @@
 [Unit]
 Description=Home Assistant CLI
-Wants=hassos-supervisor.service
-After=systemd-user-sessions.service plymouth-quit-wait.service getty-pre.target hassos-supervisor.service
+After=systemd-user-sessions.service plymouth-quit-wait.service getty-pre.target haos-supervisor.service
 Conflicts=getty@%i.service
 
 # If additional gettys are spawned during boot then we should make
 # sure that this is synchronized before getty.target, even though
 # getty.target didn't actually pull it in.
 Before=getty.target
-IgnoreOnIsolate=yes
 
 # IgnoreOnIsolate causes issues with sulogin, if someone isolates
 # rescue.target or starts rescue.service from multi-user.target or
@@ -16,15 +14,20 @@ IgnoreOnIsolate=yes
 Conflicts=rescue.service
 Before=rescue.service
 
+# Same value as RestartMaxDelaySec to avoid marking the service as failed
+StartLimitIntervalSec=3s
+
 [Service]
 # the VT is cleared by TTYVTDisallocate
 # The '-o' option value tells agetty to replace 'login' arguments with an
 # option to preserve environment (-p), followed by '--' for safety, and then
 # the entered username.
-ExecStart=/usr/sbin/hassos-cli
+ExecStart=/usr/sbin/haos-cli
 Type=idle
 Restart=always
-RestartSec=0
+RestartSec=100ms
+RestartMaxDelaySec=3s
+RestartSteps=3
 UtmpIdentifier=%I
 TTYPath=/dev/%I
 TTYReset=yes

@@ -1,13 +1,9 @@
-# Developer Documentation
+# Documentation
 
-## Contents
+Documentation for the Home Assistant Operating System is available on the [contributors website][docs].
+If you want to contribute to this documentation, please refer to the [home-assistant/contributors.home-assistant.io][docs-repo] repository.
 
-- [Getting started](./getting_started_development.md) - the place for developers to begin
-- [Development](./development.md) - more details for developers
-- [Deployment](./deployment.md) - approach to git branching and releases
-- [Configuration](./configuration.md) - how users can configure HassOS
-- [Partition](./partition.md) - partition layout
-- [Network](./network.md) - approach to networking
-- [Bluetooth](./bluetooth.md) - approach to bluetooth
-- [Kernel](./kernel.md) - kernel versions
-- [Boards](./boards/README.md) - board specific documentation
+For the list of Linux kernel versions used currently in this branch of Home Assistant Operating System, see [kernel.md](./kernel.md).
+
+[docs]: https://contributors.home-assistant.io/os/operating-system/
+[docs-repo]: https://github.com/home-assistant/contributors.home-assistant.io/
